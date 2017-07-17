@@ -1,19 +1,27 @@
+import { merge } from 'lodash';
 import {
   RECEIVE_CURRENT_USER,
   RECEIVE_ERRORS
 } from '../actions/session_actions';
 
-const RootReducer = (state, action) => {
+const defaultState = {
+  currentUser: null,
+  errors: []
+};
+
+const sessionReducer = (state = defaultState, action) => {
   Object.freeze(state);
 
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
+      return merge({}, state, { currentUser: action.user, errors: [] });
 
     case RECEIVE_ERRORS:
+      return merge({}, state, { errors: action.errors });
 
     default:
-
+      return state;
   }
 };
 
-export default RootReducer;
+export default sessionReducer;
