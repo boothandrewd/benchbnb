@@ -1,7 +1,8 @@
 import React from 'react';
 import GreetingContainer from './greeting/greeting_container';
-import { Route } from 'react-router-dom';
+// import { Route } from 'react-router-dom';
 import SessionFormContainer from './session/session_form_container';
+import AuthRoute from '../util/route_util';
 
 export default () => (
   <div>
@@ -10,7 +11,7 @@ export default () => (
       <GreetingContainer/>
     </header>
 
-    <Route path='/signin' component={SessionFormContainer}/>
-    <Route path='/signup' component={SessionFormContainer}/>
+    <AuthRoute path='/signin' component={SessionFormContainer}/>
+    <AuthRoute path='/signup' component={SessionFormContainer}/>
   </div>
 );
